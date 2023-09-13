@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\DataKaryawanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
+use App\Models\DataKaryawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +50,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('tables', function () {
 		return view('tables');
 	})->name('tables');
+
+
+	Route::get('/tables', [DataKaryawanController::class,'index'])->name('tables');
+    Route::get('/tables/edit/{id}',[DataKaryawanController::class,'edit'])->name('editDatakaryawan');
+    Route::post('/tables/edit/{id}',[DataKaryawanController::class,'update'])->name('updateDatakaryawan');
+	Route::get('/tables/create',[DataKaryawanController::class,'create'])->name('createDatakaryawan');
+	Route::post('/tables/create',[DataKaryawanController::class,'store'])->name('storeDatakaryawan');
+    Route::get('/tables/{id}',[DataKaryawanController::class,'destroy'])->name('deleteDatakaryawan');
 
     Route::get('virtual-reality', function () {
 		return view('virtual-reality');
