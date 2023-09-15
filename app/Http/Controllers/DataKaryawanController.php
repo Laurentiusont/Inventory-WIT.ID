@@ -33,12 +33,12 @@ class DataKaryawanController extends Controller
     {
         $validatedData = validator($request->all(), [
             'nama_karyawan' => 'required|string|max:100',
-            'jenis_kelamin' => 'required|string|max:100',
-            'email' => 'required|string|max:100',          
-            'telepon' => 'required|string|max:100',
-            'jabatan' => 'required|string|max:100',
-            'divisi' => 'required|string|max:100',
-            'alamat' => 'required|string|max:100'
+            'jenis_kelamin' => 'required|string|max:45',
+            'email' => 'required|string|max:45',          
+            'telepon' => 'required|string|max:15',
+            'jabatan' => 'required|string|max:45',
+            'divisi' => 'required|string|max:45',
+            'alamat' => 'required|string|max:45'
         ])->validate();
         $dataKaryawan = new DataKaryawan(); 
         $dataKaryawan -> nama_karyawan = $validatedData['nama_karyawan'];
